@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ceee441-39d9-4650-8986-bb0a1a0f6618" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/minizelda/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minizelda/Spritesheet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/MiniZelda.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MiniZelda.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minizelda/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/minizelda/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minizelda/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/minizelda/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MiniZelda/.idea/MiniZelda.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MiniZelda/.idea/MiniZelda.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MiniZelda/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MiniZelda/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MiniZelda/minizelda/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MiniZelda/minizelda/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MiniZelda/minizelda/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MiniZelda/minizelda/Player.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,10 +46,14 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Me/Documents/GitHub/MiniZelda/res",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -52,7 +64,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1679160501108</updated>
-      <workItem from="1679160503318" duration="1117000" />
+      <workItem from="1679160503318" duration="15133000" />
     </task>
     <servers />
   </component>
