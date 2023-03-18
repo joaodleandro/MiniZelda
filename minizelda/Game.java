@@ -2,45 +2,25 @@ package minizelda;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
-public class Game extends Canvas implements Runnable {
+public class Game extends Canvas implements Runnable, KeyListener {
 
     public static int WIDTH = 480, HEIGHT = 480;
-
-    private boolean running = false;
-    private Thread thread;
+    public Player player;
+    public World world;
 
     public Game() {
+        this.addKeyListener(this);
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-    }
-
-    public synchronized void start() {
-        if (running) {
-            return;
-        }
-
-        running = true;
-        thread = new Thread(this);
-        thread.start();
-    }
-
-    public synchronized void stop() {
-        if (!running) {
-            return;
-        }
-
-        running = false;
-
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        player = new Player(50,50);
+        world = new World();
     }
 
     private void tick() {
-
+        player.tick();
     }
 
     private void render() {
@@ -56,39 +36,23 @@ public class Game extends Canvas implements Runnable {
         graphics.setColor(Color.black);
         graphics.fillRect(0, 0, WIDTH, HEIGHT);
 
-        graphics.setColor(Color.red);
-        graphics.fillRect(10,10,100,100);
-
+        player.render(graphics);
+        world.render(graphics);
         bs.show();
     }
 
     @Override
     public void run() {
-        long lastTime = System.nanoTime();
-        double amountOfTicks = 60.0;
-        double ns = 1000000000 / amountOfTicks;
-        double delta = 0;
 
-        while (running) {
-            long now = System.nanoTime();
-            delta += (now - lastTime) / ns;
-            lastTime = now;
-
-            while (delta >= 1) {
-                tick();
-                delta--;
-            }
-
+        while (true) {
+            tick();
             render();
-
             try {
-                Thread.sleep(2);
+                Thread.sleep(1000/60);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-
-        stop();
     }
 
     public static void main(String[] args) {
@@ -104,7 +68,44 @@ public class Game extends Canvas implements Runnable {
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // shutdown if closed
         jframe.setVisible(true);
 
-        game.start();
+        new Thread(game).start();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            player.right = true;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+            player.left = true;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_UP) {
+            player.up = true;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+            player.down = true;
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            player.right = false;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+            player.left = false;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_UP) {
+            player.up = false;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+            player.down = false;
+        }
     }
 }
 
