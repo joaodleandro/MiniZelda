@@ -19,6 +19,8 @@ public class Player extends Rectangle {
 
     public boolean shoot = false;
 
+    public int health = 100;
+
     public Player(int x, int y) {
         super(x,y,32,32);
     }

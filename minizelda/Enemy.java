@@ -1,8 +1,6 @@
 package minizelda;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Enemy extends Rectangle {
@@ -16,24 +14,52 @@ public class Enemy extends Rectangle {
         super(x,y,32,32);
     }
 
+    public boolean collisionWithPlayer() {
+
+        Rectangle actual = new Rectangle(x, y,16,16);
+        Rectangle player = new Rectangle(Game.player.x, Game.player.y, 16, 16);
+
+        return actual.intersects(player);
+    }
+
+    public boolean collisionWithOtherEnemies(int xspd, int yspd) {
+        Rectangle actual = new Rectangle(x+xspd, y+yspd,16,16);
+
+        for (Enemy a: Game.enemies) {
+            if(a==this) continue;
+
+            Rectangle targetEnemy = new Rectangle(a.x,a.y,16,16);
+            if(actual.intersects(targetEnemy)) return false;
+        }
+        return true;
+    }
+
     public void followPlayer() {
         Player player = Game.player;
-        if(x < player.x && World.collision(x + spd, y)) {
-            if (new Random().nextInt(100) < 50)
-                x += spd;
-        }
-        else if(x > player.x && World.collision(x - spd, y)) {
-            if (new Random().nextInt(100) < 50)
-                x -= spd;
-        }
+        if(!this.collisionWithPlayer()) {
+            if (x < player.x && World.collision(x + spd, y) && collisionWithOtherEnemies(spd, 0)) {
+                if (new Random().nextInt(100) < 50)
+                    x += spd;
+            } else if (x > player.x && World.collision(x - spd, y) && collisionWithOtherEnemies(-spd, 0)) {
+                if (new Random().nextInt(100) < 50)
+                    x -= spd;
+            }
 
-        if(y < player.y && World.collision(x, y + spd)) {
-            if (new Random().nextInt(100) < 50)
-                y += spd;
-        }
-        else if(y > player.y && World.collision(x, y - spd)) {
-            if (new Random().nextInt(100) < 50)
-                y -= spd;
+            if (y < player.y && World.collision(x, y + spd) && collisionWithOtherEnemies(0, spd)) {
+                if (new Random().nextInt(100) < 50)
+                    y += spd;
+            } else if (y > player.y && World.collision(x, y - spd) && collisionWithOtherEnemies(0, -spd)) {
+                if (new Random().nextInt(100) < 50)
+                    y -= spd;
+            }
+        } else { // intersecting with player
+            if(new Random().nextInt(100) < 10) {
+                player.health--;
+                System.out.println("HP: " + player.health);
+                if (player.health == 0) {
+                    System.exit(1);
+                }
+            }
         }
     }
 

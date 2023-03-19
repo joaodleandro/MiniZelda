@@ -16,7 +16,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
     public static Player player;
     public static World world;
-    public List<Enemy> enemies = new ArrayList<>();
+    public static List<Enemy> enemies = new ArrayList<>();
 
     public Game() {
         this.addKeyListener(this);
@@ -25,6 +25,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
         world = new World();
         player = new Player(50,50);
         enemies.add(new Enemy(50,50));
+        enemies.add(new Enemy(70, 70));
     }
 
     private void tick() {
@@ -49,10 +50,10 @@ public class Game extends Canvas implements Runnable, KeyListener {
         graphics.fillRect(0, 0, WIDTH*SCALE, HEIGHT*SCALE);
 
         world.render(graphics);
-        player.render(graphics);
         for (Enemy a: enemies) {
             a.render(graphics);
         }
+        player.render(graphics);
         bs.show();
     }
 
@@ -99,13 +100,15 @@ public class Game extends Canvas implements Runnable, KeyListener {
         else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
             player.left = true;
         }
-        else if(e.getKeyCode() == KeyEvent.VK_UP) {
+
+        if(e.getKeyCode() == KeyEvent.VK_UP) {
             player.up = true;
         }
         else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
             player.down = true;
         }
-        else if(e.getKeyCode() == KeyEvent.VK_Z) {
+
+        if(e.getKeyCode() == KeyEvent.VK_Z) {
             player.shoot = true;
         }
 
@@ -119,7 +122,8 @@ public class Game extends Canvas implements Runnable, KeyListener {
         else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
             player.left = false;
         }
-        else if(e.getKeyCode() == KeyEvent.VK_UP) {
+
+        if(e.getKeyCode() == KeyEvent.VK_UP) {
             player.up = false;
         }
         else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
