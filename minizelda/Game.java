@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Game extends Canvas implements Runnable, KeyListener {
 
@@ -12,19 +14,25 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
     public static int SCALE = 3;
 
-    public Player player;
-    public World world;
+    public static Player player;
+    public static World world;
+    public List<Enemy> enemies = new ArrayList<>();
 
     public Game() {
         this.addKeyListener(this);
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         new Spritesheet();
-        player = new Player(50,50);
         world = new World();
+        player = new Player(50,50);
+        enemies.add(new Enemy(50,50));
     }
 
     private void tick() {
         player.tick();
+
+        for (Enemy a: enemies) {
+            a.tick();
+        }
     }
 
     private void render() {
@@ -40,8 +48,11 @@ public class Game extends Canvas implements Runnable, KeyListener {
         graphics.setColor(Color.green);
         graphics.fillRect(0, 0, WIDTH*SCALE, HEIGHT*SCALE);
 
-        player.render(graphics);
         world.render(graphics);
+        player.render(graphics);
+        for (Enemy a: enemies) {
+            a.render(graphics);
+        }
         bs.show();
     }
 
@@ -97,6 +108,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
         else if(e.getKeyCode() == KeyEvent.VK_Z) {
             player.shoot = true;
         }
+
     }
 
     @Override
