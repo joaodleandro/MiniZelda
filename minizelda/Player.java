@@ -1,6 +1,8 @@
 package minizelda;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Player extends Rectangle {
 
@@ -11,6 +13,12 @@ public class Player extends Rectangle {
 
     public int idleFrames = 0; int targetFrame = 15;
 
+    public static List<Bullet> bullets = new ArrayList<>();
+
+    public int dir = 1;
+
+    public boolean shoot = false;
+
     public Player(int x, int y) {
         super(x,y,32,32);
     }
@@ -20,9 +28,11 @@ public class Player extends Rectangle {
         if(right && World.collision(x + spd, y)) {
             x+=spd;
             moved = true;
+            dir=1;
         } else if(left && World.collision(x - spd, y)) {
             x-=spd;
             moved = true;
+            dir=-1;
         } else if(up && World.collision(x, y - spd)) {
             y-=spd;
             moved = true;
@@ -39,12 +49,26 @@ public class Player extends Rectangle {
                 if (idleAnim == Spritesheet.player_front.length) idleAnim = 0;
             }
         }
+
+        if(shoot){
+            shoot = false;
+            bullets.add(new Bullet(x,y,dir));
+        }
+
+        for (int i = 0; i < bullets.size(); i++) {
+            bullets.get(i).tick();
+        }
+
     }
 
     public void render(Graphics graphics) {
 //        graphics.setColor(Color.blue);
 //        graphics.fillRect(x,y,width,height);
         graphics.drawImage(Spritesheet.player_front[idleAnim],x,y,32,32,null);
+
+        for (Bullet a: bullets) {
+            a.render(graphics);
+        }
 
     }
 }
