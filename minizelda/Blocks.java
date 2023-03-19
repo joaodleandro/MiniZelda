@@ -9,9 +9,10 @@ public class Blocks extends Rectangle {
     }
 
     public void render(Graphics graphics) {
-        graphics.setColor(Color.magenta);
-        graphics.fillRect(x,y,width,height);
-        graphics.setColor(Color.black);
-        graphics.drawRect(x,y,width,height);
+        graphics.drawImage(Spritesheet.tile_Wall,x,y,32,32,null);
+//        graphics.setColor(Color.magenta);
+//        graphics.fillRect(x,y,width,height);
+//        graphics.setColor(Color.black);
+//        graphics.drawRect(x,y,width,height);
     }
 }

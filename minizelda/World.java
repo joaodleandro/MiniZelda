@@ -10,19 +10,19 @@ public class World {
 
     public World() {
         // x upper axis
-        for(int i = 0; i < 15; i++) {
+        for(int i = 0; i < 20; i++) {
             blocks.add(new Blocks(i*32, 0));
         }
         // y left axis
-        for(int i = 0; i < 15; i++) {
+        for(int i = 0; i < 20; i++) {
             blocks.add(new Blocks(0, i*32));
         }
         // y right axis
-        for(int i = 0; i < 15; i++) {
-            blocks.add(new Blocks(480-32, i*32));
+        for(int i = 0; i < 20; i++) {
+            blocks.add(new Blocks(640-32, i*32));
         }
         // x lower axis
-        for(int i = 0; i < 15; i++) {
+        for(int i = 0; i < 20; i++) {
             blocks.add(new Blocks(i*32, 480-32));
         }
     }
@@ -30,9 +30,9 @@ public class World {
     public static boolean collision(int x, int y) {
         for (Blocks a: blocks)
             if(a.intersects(new Rectangle(x,y,32,32)))
-                return true;
+                return false;
 
-        return false;
+        return true;
     }
 
     public void render(Graphics graphics) {
