@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ceee441-39d9-4650-8986-bb0a1a0f6618" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/minizelda/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minizelda/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/minizelda/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minizelda/Spritesheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/minizelda/Spritesheet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +58,8 @@
       <option name="presentableId" value="Default" />
       <updated>1679160501108</updated>
       <workItem from="1679160503318" duration="24303000" />
-      <workItem from="1679240037631" duration="2198000" />
+      <workItem from="1679240037631" duration="26676000" />
+      <workItem from="1679280717148" duration="85000" />
     </task>
     <servers />
   </component>

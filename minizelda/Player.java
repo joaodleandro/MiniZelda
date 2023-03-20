@@ -15,6 +15,7 @@ public class Player extends Rectangle {
     public boolean shoot = false;
     public double health = 100;
     public static boolean damaged = false;
+    private int shootFrames = 0;
 
     public Player(int x, int y) {
         super(x,y,32,32);
@@ -57,7 +58,9 @@ public class Player extends Rectangle {
 
         if(health<=0) Game.gameState = "GAME_OVER";
 
-        if(shoot){
+        shootFrames++;
+        if(shoot && shootFrames>=20){
+            shootFrames=0;
             shoot = false;
             bullets.add(new Bullet(x,y,dir));
         }
@@ -71,6 +74,8 @@ public class Player extends Rectangle {
     public void render(Graphics graphics) {
 //        graphics.setColor(Color.blue);
 //        graphics.fillRect(x,y,width,height);
+        graphics.setColor(Color.BLACK);
+        graphics.drawRect(x,y,32,32);
         if(!damaged)
             graphics.drawImage(Spritesheet.player_front[idleAnim],x,y,32,32,null);
         else

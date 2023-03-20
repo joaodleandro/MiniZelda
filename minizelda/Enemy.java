@@ -8,25 +8,27 @@ public class Enemy extends Rectangle {
     public int idleAnim = 0;
     public int idleFrames = 0; int targetFrame = 15;
 
+    public int health = 10;
+
     public Enemy(int x, int y) {
         super(x,y,32,32);
     }
 
     public boolean collisionWithPlayer() {
 
-        Rectangle actual = new Rectangle(x, y,16,16);
-        Rectangle player = new Rectangle(Game.player.x, Game.player.y, 16, 16);
+        Rectangle actual = new Rectangle(x, y,32,32);
+        Rectangle player = new Rectangle(Game.player.x, Game.player.y, 32, 32);
 
         return actual.intersects(player);
     }
 
     public boolean collisionWithOtherEnemies(int xspd, int yspd) {
-        Rectangle actual = new Rectangle(x+xspd, y+yspd,16,16);
+        Rectangle actual = new Rectangle(x+xspd, y+yspd,32,32);
 
         for (Enemy a: Game.enemies) {
             if(a==this) continue;
 
-            Rectangle targetEnemy = new Rectangle(a.x,a.y,16,16);
+            Rectangle targetEnemy = new Rectangle(a.x,a.y,32,32);
             if(actual.intersects(targetEnemy)) return false;
         }
         return true;
@@ -69,12 +71,17 @@ public class Enemy extends Rectangle {
             idleFrames = 0;
             idleAnim++;
             if (idleAnim == Spritesheet.slime_walk.length) idleAnim = 0;
+        }
 
+        if(health <= 0) {
+            Game.enemies.remove(this);
         }
 
     }
 
     public void render(Graphics graphics) {
+            graphics.setColor(Color.BLACK);
+            graphics.drawRect(x,y,32,32);
             graphics.drawImage(Spritesheet.slime_walk[idleAnim],x,y,32,32,null);
 
     }

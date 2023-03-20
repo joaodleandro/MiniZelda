@@ -17,7 +17,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
     public static World world;
     public static List<Enemy> enemies = new ArrayList<>();
     public UI ui;
-    public static String gameState = "GAME_OVER";
+    public static String gameState = "NORMAL";
     private boolean showMessageGameOver = true;
     private int gameOverFrames = 0;
     private boolean restartGame = false;
@@ -46,8 +46,8 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
             player.tick();
 
-            for (Enemy a : enemies) {
-                a.tick();
+            for (int i = 0;  i < enemies.size(); i++) {
+                enemies.get(i).tick();
             }
         }
         else if(gameState.equals("GAME_OVER")) {
@@ -82,8 +82,8 @@ public class Game extends Canvas implements Runnable, KeyListener {
         graphics.fillRect(0, 0, WIDTH, HEIGHT);
 
         world.render(graphics);
-        for (Enemy a: enemies) {
-            a.render(graphics);
+        for (int i = 0;  i < enemies.size(); i++) {
+            enemies.get(i).render(graphics);
         }
         player.render(graphics);
         ui.render(graphics);
