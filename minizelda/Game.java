@@ -11,12 +11,12 @@ import java.util.List;
 public class Game extends Canvas implements Runnable, KeyListener {
 
     public static int WIDTH = 640, HEIGHT = 480;
-
     public static int SCALE = 3;
 
     public static Player player;
     public static World world;
     public static List<Enemy> enemies = new ArrayList<>();
+    public UI ui;
 
     public Game() {
         this.addKeyListener(this);
@@ -24,8 +24,16 @@ public class Game extends Canvas implements Runnable, KeyListener {
         new Spritesheet();
         world = new World();
         player = new Player(50,50);
-        enemies.add(new Enemy(50,50));
-        enemies.add(new Enemy(70, 70));
+        ui = new UI();
+        enemies.clear(); // static list doesn't reset on game over
+        enemies.add(new Enemy(340,150));
+        enemies.add(new Enemy(50, 70));
+        enemies.add(new Enemy(480,300));
+        enemies.add(new Enemy(200, 50));
+        enemies.add(new Enemy(100,100));
+        enemies.add(new Enemy(140, 140));
+        enemies.add(new Enemy(370,50));
+//        enemies.add(new Enemy(90, 100));
     }
 
     private void tick() {
@@ -54,6 +62,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
             a.render(graphics);
         }
         player.render(graphics);
+        ui.render(graphics);
         bs.show();
     }
 

@@ -6,7 +6,6 @@ public class Bullet extends Rectangle {
 
     public int dir;
     public int speed = 8;
-
     public int frames = 0;
 
     public Bullet(int x, int y, int dir) {

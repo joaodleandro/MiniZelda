@@ -8,18 +8,13 @@ public class Player extends Rectangle {
 
     public boolean right,left,up,down;
     public int spd = 4;
-
     public int idleAnim = 0;
-
-    public int idleFrames = 0; int targetFrame = 15;
-
+    public int idleFrames = 0; int targetFrame = 15; int damageFrames = 0;
     public static List<Bullet> bullets = new ArrayList<>();
-
     public int dir = 1;
-
     public boolean shoot = false;
-
-    public int health = 100;
+    public double health = 100;
+    public static boolean damaged = false;
 
     public Player(int x, int y) {
         super(x,y,32,32);
@@ -52,6 +47,16 @@ public class Player extends Rectangle {
             }
         }
 
+        if(damaged) {
+            damageFrames++;
+            if(damageFrames==15){
+                damageFrames = 0;
+                damaged = false;
+            }
+        }
+
+        if(health<=0) new Game();
+
         if(shoot){
             shoot = false;
             bullets.add(new Bullet(x,y,dir));
@@ -66,7 +71,10 @@ public class Player extends Rectangle {
     public void render(Graphics graphics) {
 //        graphics.setColor(Color.blue);
 //        graphics.fillRect(x,y,width,height);
-        graphics.drawImage(Spritesheet.player_front[idleAnim],x,y,32,32,null);
+        if(!damaged)
+            graphics.drawImage(Spritesheet.player_front[idleAnim],x,y,32,32,null);
+        else
+            graphics.drawImage(Spritesheet.player_dmg,x,y,32,32,null);
 
         for (Bullet a: bullets) {
             a.render(graphics);

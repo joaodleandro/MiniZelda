@@ -7,14 +7,11 @@ import java.io.IOException;
 public class Spritesheet {
 
     public static BufferedImage spritesheet;
-
     public static BufferedImage slime;
-
     public static BufferedImage[] slime_walk;
-
     public static BufferedImage[] player_front;
+    public static BufferedImage player_dmg;
     public static BufferedImage tile_Wall;
-
     public static BufferedImage dirt;
 
     public Spritesheet() {
@@ -36,6 +33,8 @@ public class Spritesheet {
         slime_walk[1] = getSpriteSlime(34,47,29,17);
         slime_walk[2] = getSpriteSlime(68,49,27,15);
         slime_walk[3] = getSpriteSlime(102,45,25,19);
+
+        player_dmg = getSprite(200,241,16,16);
 
         tile_Wall = dirt.getSubimage(0,0,128,128);
     }
