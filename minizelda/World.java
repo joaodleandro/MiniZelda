@@ -14,11 +14,11 @@ public class World {
             blocks.add(new Blocks(i*32, 0));
         }
         // y left axis
-        for(int i = 0; i < 20; i++) {
+        for(int i = 0; i < 15; i++) {
             blocks.add(new Blocks(0, i*32));
         }
         // y right axis
-        for(int i = 0; i < 20; i++) {
+        for(int i = 0; i < 15; i++) {
             blocks.add(new Blocks(640-32, i*32));
         }
         // x lower axis

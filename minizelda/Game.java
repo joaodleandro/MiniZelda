@@ -17,6 +17,10 @@ public class Game extends Canvas implements Runnable, KeyListener {
     public static World world;
     public static List<Enemy> enemies = new ArrayList<>();
     public UI ui;
+    public static String gameState = "GAME_OVER";
+    private boolean showMessageGameOver = true;
+    private int gameOverFrames = 0;
+    private boolean restartGame = false;
 
     public Game() {
         this.addKeyListener(this);
@@ -37,11 +41,31 @@ public class Game extends Canvas implements Runnable, KeyListener {
     }
 
     private void tick() {
-        player.tick();
 
-        for (Enemy a: enemies) {
-            a.tick();
+        if(gameState.equals("NORMAL")) {
+
+            player.tick();
+
+            for (Enemy a : enemies) {
+                a.tick();
+            }
         }
+        else if(gameState.equals("GAME_OVER")) {
+//            System.out.println("Game over");
+            gameOverFrames++;
+            if(gameOverFrames==30) {
+                gameOverFrames = 0;
+                showMessageGameOver = !showMessageGameOver; // game over blinking message
+            }
+
+            if(restartGame){
+                restartGame = false;
+                gameState = "NORMAL";
+                new Game();
+            }
+
+        }
+
     }
 
     private void render() {
@@ -55,7 +79,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
         Graphics graphics = bs.getDrawGraphics();
 
         graphics.setColor(Color.green);
-        graphics.fillRect(0, 0, WIDTH*SCALE, HEIGHT*SCALE);
+        graphics.fillRect(0, 0, WIDTH, HEIGHT);
 
         world.render(graphics);
         for (Enemy a: enemies) {
@@ -63,6 +87,17 @@ public class Game extends Canvas implements Runnable, KeyListener {
         }
         player.render(graphics);
         ui.render(graphics);
+        if(gameState.equals("GAME_OVER")) {
+            Graphics2D graphics2 = (Graphics2D) graphics;
+            graphics2.setColor(new Color(0,0,0,100));
+            graphics2.fillRect(0, 0,WIDTH, HEIGHT);
+                graphics.setFont(new Font("arial", Font.BOLD, 28));
+                graphics.setColor(Color.WHITE);
+                graphics.drawString("GAME OVER", WIDTH / 2 - 80, HEIGHT / 2);
+            if(showMessageGameOver) {
+                graphics.drawString(">PRESS ENTER FOR RESTART<", WIDTH / 2 - 215, HEIGHT / 2 + 40);
+            }
+        }
         bs.show();
     }
 
@@ -119,6 +154,10 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
         if(e.getKeyCode() == KeyEvent.VK_Z) {
             player.shoot = true;
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+            restartGame = true;
         }
 
     }

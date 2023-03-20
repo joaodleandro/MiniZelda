@@ -55,7 +55,7 @@ public class Player extends Rectangle {
             }
         }
 
-        if(health<=0) new Game();
+        if(health<=0) Game.gameState = "GAME_OVER";
 
         if(shoot){
             shoot = false;

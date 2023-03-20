@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ceee441-39d9-4650-8986-bb0a1a0f6618" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/minizelda/UI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minizelda/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/minizelda/Bullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minizelda/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/minizelda/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minizelda/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/minizelda/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minizelda/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/minizelda/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minizelda/Spritesheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/minizelda/Spritesheet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MiniZelda/minizelda/Bullet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MiniZelda/minizelda/Bullet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MiniZelda/minizelda/Enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MiniZelda/minizelda/Enemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minizelda/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/minizelda/World.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MiniZelda/minizelda/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MiniZelda/minizelda/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MiniZelda/minizelda/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MiniZelda/minizelda/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MiniZelda/minizelda/Spritesheet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MiniZelda/minizelda/Spritesheet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/spritesheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/spritesheet.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +62,7 @@
       <option name="presentableId" value="Default" />
       <updated>1679160501108</updated>
       <workItem from="1679160503318" duration="24303000" />
-      <workItem from="1679240037631" duration="23884000" />
+      <workItem from="1679240037631" duration="26140000" />
     </task>
     <servers />
   </component>
